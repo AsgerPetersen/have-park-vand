@@ -182,6 +182,8 @@ Input "Elevation" sættes til "Filled DEM", "Initiation Grid" sættes til "Catch
 
 Sørg for at gemme "Channel Network" output (Der er to med samme navn, vi skal især bruge den første.)
 
+Hvis der ønskes et mere eller minde detaljeret netværk kan processen køres igen med en anden "Initiation Threshold". Forøges værdien bliver netværket mindre detaljeret og vice versa.
+
 Watershed basins
 -----------------------------
 Åbn "Filled DEM" og "Channel Network" fra ovenstående.
