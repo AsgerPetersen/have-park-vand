@@ -4,9 +4,9 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Brug Danmarks Højdemodel helt gratis</title>
+		<title>QGIS og vand</title>
 
-		<meta name="description" content="Brug Danmarks Højdemodel helt gratis">
+		<meta name="description" content="QGIS og vand">
 		<meta name="author" content="Asger Skovbo Petersen">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -94,19 +94,6 @@
 				<!-- -->
 				<section>
 					<section>
-						<h2>Få slides - meget demo</h2>
-					</section>
-					<section>
-						<h2>Hvad var det nu for en knap, du klikkede på...</h2>
-					</section>
-					<section>
-						<h2>YouTube</h2>
-						<a href="http://www.youtube.com/playlist?list=PLuryEfEtfBZBpD9-KxlhjMeM1oaznPaa1" target="_blank"><img src="img/qgis_youtube.png" /></a>
-					</section>
-				</section>
-				<!-- -->
-				<section>
-					<section>
 						<h2>Rasterdata</h2>
 					</section>
 					<section>
@@ -160,38 +147,113 @@ POLYGON((702000.0 6201000.0,703000.0 6201000.0,703000.0 6200000.0,702000.0 62000
 					</section>
 
 				</section>
-				<!-- -->
-				<section>
-					<h2>Danmarks Højdemodel</h2>
-					<p>
-						Hent data fra <a href="http://download.kortforsyningen.dk/">download.kortforsyningen.dk</a> eller <a href="ftp://ftp.kortforsyningen.dk">ftp.kortforsyningen.dk</a>
-					</p>
-				</section>
-				<!-- -->
+				<!-- LIDAR DATA -->
 				<section>
 					<section>
-						<h2>Åbn QGIS</h2>
-						<img src="img/010_qgis_logo.png">
+						<h2>Danmarks Højdemodel</h2>
+						<p>
+							Data kan hentes gratis fra <a href="http://download.kortforsyningen.dk/">download.kortforsyningen.dk</a> eller <a href="ftp://ftp.kortforsyningen.dk">ftp.kortforsyningen.dk</a>
+						</p>
 					</section>
 					<section>
-						<h2>...og klø på!</h2>
+						<!-- <a href="http://www.gsi.go.jp/common/000019391.jpg">
+							<img src="http://www.gsi.go.jp/common/000019391.jpg" />
+						</a> -->
+						<img src="img/basic_scene_dtm_dsm.png" />
+						<aside class="notes">
+							DTM og DSM
+						</aside>
 					</section>
+					<section>
+						<a href="http://proceedings.esri.com/library/userconf/proc01/professional/papers/pap214/p2141.jpg">
+							<img src="http://proceedings.esri.com/library/userconf/proc01/professional/papers/pap214/p2141.jpg" />
+						</a>
+						<aside class="notes">
+							Laserscanning principskitse med flyver
+						</aside>
+					</section>
+					<section>
+						<a href="http://www.cvg.rdg.ac.uk/projects/LIDAR/figures/LIDAR_schematic_marc_bartels.jpg">
+							<img src="http://www.cvg.rdg.ac.uk/projects/LIDAR/figures/LIDAR_schematic_marc_bartels.jpg" />
+						</a>
+						<aside class="notes">
+							Flere retursignaler
+						</aside>
+					</section>
+					<section>
+						<img src="img/basic_scene_edit.png" />
+						<aside class="notes">
+							Punkter fordelt i landskab
+						</aside>
+					</section>
+					<section>
+						<a href="http://www.kortforsyningen.dk/sites/default/files/DOKUMENTATION/Data/dk_dhm_punktsky_sep_2012.pdf">
+							<img src="img/klassificeret_intensity.png" />
+						</a>
+						<aside class="notes">
+							Punktsky intentsitet
+						</aside>
+					</section>
+					<section>
+						<a href="http://www.kortforsyningen.dk/sites/default/files/DOKUMENTATION/Data/dk_dhm_punktsky_sep_2012.pdf">
+							<img src="img/klassificeret.png" />
+						</a>
+						<aside class="notes">
+							Klassificeret med klasser
+						</aside>
+					</section>
+					<!-- End DHM section -->
 				</section>
-				<!-- -->
+
+				<!-- Hydrologi -->
 				<section>
 					<section>
-						<h2>Hovedpointer</h2>
+						<h2>Vand på terræn</h2>
+						<p>Meget kompliceret...</p>
 					</section>
 					<section>
-						<h2>Konvertér til GeoTIFF</h2>
+						<h2>Antagelser</h2>
+						<p>
+							<ul>
+								<li>
+									Vandet flyder altid ned ad den stejleste rute
+								</li>
+								<li>
+									Ingen nedsivning, kloakker etc.
+								</li>
+								<li>
+									Vandet flyder uendeligt hurtigt
+								</li>
+								<li>
+									(Uendeligt meget vand)
+								</li>
+							</ul>
+						</p>
 					</section>
 					<section>
-						<h2>Saml i én virtuel fil</h2>
+						<a href="http://webhelp.esri.com/arcgisdesktop/9.3/printBooks_topics.cfm?pid=6050">
+							<img src="http://webhelp.esri.com/arcgisdesktop/9.3/published_images/SAc_Hydro_Flow_direction.gif" />
+						</a>
+						<aside class="notes">
+							Flow direction
+						</aside>
 					</section>
 					<section>
-						<h2>Optimér til visualisering</h2>
+						<a href="http://webhelp.esri.com/arcgisdesktop/9.3/printBooks_topics.cfm?pid=6050">
+							<img src="http://webhelp.esri.com/arcgisdesktop/9.3/published_images/SAc_Hydro_Flow_accumulation.png" />
+						</a>
+						<aside class="notes">
+							Flow direction
+						</aside>
 					</section>
+					<section>
+						<a href="">
+							<img src="" />
+						</a>
+					</section>
+
 				</section>
+				<!-- -->
 				<!-- -->
 				<section>
 					<h2>Tak for opmærksomheden</h2>
