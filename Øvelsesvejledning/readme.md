@@ -198,9 +198,13 @@ I Processing toolbox aktiveres algoritmen "Watershed Basins".
 
 "Elevation" sættes til "Filled DEM" og "Channel Network" til "Channel Network" fra ovenstående.
 
-Kør processen og se på output.
+Kør processen og se på output. Der er regnet et opland for hver "gren" af det producerede netværk. Ønskes flere eller færre oplande, kan Channel Network køres igen med en anden værdi for "Initiation Threshold".
 
-TIP: Oplandene kan vektoriseres på flere måder i QGIS. Feks med Processing Algoritmen "Vectorising grid classes"
+Oplandene kan vektoriseres på flere måder i QGIS. Feks med Processing Algoritmen "Vectorising grid classes".
+
+I Processing toolbox aktiveres algoritmen "Vectorising grid classes".
+
+Input "Grid" sættes til "Wateshed Basins" fra foregående proces (Bemærk, at det IKKE skal være output af samme navn fra Wang & Liu). "Class Selection" sættes til "[1] all classes" og "Vectorised class as..." sættes til "[1] each island as a seperated polygon".
 
 Processing model
 -----------------------------
