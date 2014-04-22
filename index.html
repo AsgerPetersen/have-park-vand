@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="da">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>QGIS og vand</title>
+
+		<meta name="description" content="QGIS og vand">
+		<meta name="author" content="Asger Skovbo Petersen">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<!-- link rel="stylesheet" href="css/theme/default.css" id="theme" -->
+		<link rel="stylesheet" href="css/theme/septima.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write('<link rel="stylesheet" href="css/print/' + (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">');
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<!-- -->
+				<section data-background="img/GoogleChannelArt.jpg">
+					<h2>QGIS og vand</h2>
+					<h4>Skovskolen, 22/4-2014</h4>
+					<p>
+						<small>Af <a href="http://www.septima.dk/asger/">Asger Skovbo Petersen, Septima</a></small>
+					</p>
+				</section>
+				<!-- -->
+				<section>
+					<h2>Hvem er Septima?</h2>
+					<p>
+						<ul>
+							<li>
+								Etableret januar 2013
+							</li>
+							<li>
+								Syv medarbejdere
+							</li>
+							<li>
+								Fokus på effektiv udnyttelse af geografisk IT
+							</li>
+							<li>
+								Rådgivning, udvikling, services og produkter
+							</li>
+						</ul>
+					</p>
+					<img src="img/gruppe_for_linkedin_646x220.jpg">
+
+					<aside class="notes">
+						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+					</aside>
+				</section>
+				<!-- -->
+				<section>
+					<h2>Oversigt</h2>
+					<p>
+						<ul>
+							<li class="fragment">
+								Introduktion til rasterdata
+							</li>
+							<li class="fragment">
+								Effektiv brug af Danmarks Højdemodel i QGIS
+							</li>
+							<li class="fragment">
+								HELE Danmarks Højdemodel i QGIS
+							</li>
+							<li class="fragment">
+								Beregninger på højdemodellen
+							</li>
+						</ul>
+					</p>
+				</section>
+				<!-- -->
+				<section>
+					<section>
+						<h2>Rasterdata</h2>
+					</section>
+					<section>
+						<p>
+							<img src="img/raster_basic1.png">
+							<aside class="notes">
+								<ul>
+									<li>
+										Matrix (rækker og søjler) af celler (pixels)
+									</li>
+									<li>
+										Hver celle indeholder én værdi
+									</li>
+								</ul>
+							</aside>
+
+					</section>
+					<section>
+						<h3>Disse data på rasterformat</h3>
+						<pre><code data-trim>
+ncols         3
+nrows         4
+xllcorner     700000
+yllcorner     6200000
+cellsize      1000
+NODATA_value  -999
+0.0 110.1 26.3
+75.9 -999 82.8
+16.2 81.1 35.4
+50.0 12.2 99.9
+						</code></pre>
+
+
+					</section>
+					<section>
+						<h3>...og på vektorformat</h3>
+						<pre><code data-trim>
+POLYGON((700000.0 6204000.0,701000.0 6204000.0,701000.0 6203000.0,700000.0 6203000.0,700000.0 6204000.0))	0.0
+POLYGON((701000.0 6204000.0,702000.0 6204000.0,702000.0 6203000.0,701000.0 6203000.0,701000.0 6204000.0))	110.1
+POLYGON((702000.0 6204000.0,703000.0 6204000.0,703000.0 6203000.0,702000.0 6203000.0,702000.0 6204000.0))	26.3
+POLYGON((700000.0 6203000.0,701000.0 6203000.0,701000.0 6202000.0,700000.0 6202000.0,700000.0 6203000.0))	75.9
+POLYGON((701000.0 6203000.0,702000.0 6203000.0,702000.0 6202000.0,701000.0 6202000.0,701000.0 6203000.0))	Ukendt
+POLYGON((702000.0 6203000.0,703000.0 6203000.0,703000.0 6202000.0,702000.0 6202000.0,702000.0 6203000.0))	82.8
+POLYGON((700000.0 6202000.0,701000.0 6202000.0,701000.0 6201000.0,700000.0 6201000.0,700000.0 6202000.0))	16.2
+POLYGON((701000.0 6202000.0,702000.0 6202000.0,702000.0 6201000.0,701000.0 6201000.0,701000.0 6202000.0))	81.1
+POLYGON((702000.0 6202000.0,703000.0 6202000.0,703000.0 6201000.0,702000.0 6201000.0,702000.0 6202000.0))	35.4
+POLYGON((700000.0 6201000.0,701000.0 6201000.0,701000.0 6200000.0,700000.0 6200000.0,700000.0 6201000.0))	50.0
+POLYGON((701000.0 6201000.0,702000.0 6201000.0,702000.0 6200000.0,701000.0 6200000.0,701000.0 6201000.0))	12.2
+POLYGON((702000.0 6201000.0,703000.0 6201000.0,703000.0 6200000.0,702000.0 6200000.0,702000.0 6201000.0))	99.9
+							</code></pre>
+					</section>
+
+				</section>
+				<!-- LIDAR DATA -->
+				<section>
+					<section>
+						<h2>Danmarks Højdemodel</h2>
+						<p>
+							Data kan hentes gratis fra <a href="http://download.kortforsyningen.dk/">download.kortforsyningen.dk</a> eller <a href="ftp://ftp.kortforsyningen.dk">ftp.kortforsyningen.dk</a>
+						</p>
+					</section>
+					<section>
+						<!-- <a href="http://www.gsi.go.jp/common/000019391.jpg">
+							<img src="http://www.gsi.go.jp/common/000019391.jpg" />
+						</a> -->
+						<img src="img/basic_scene_dtm_dsm.png" />
+						<aside class="notes">
+							DTM og DSM
+						</aside>
+					</section>
+					<section>
+						<a href="http://proceedings.esri.com/library/userconf/proc01/professional/papers/pap214/p2141.jpg">
+							<img src="http://proceedings.esri.com/library/userconf/proc01/professional/papers/pap214/p2141.jpg" />
+						</a>
+						<aside class="notes">
+							Laserscanning principskitse med flyver
+						</aside>
+					</section>
+					<section>
+						<a href="http://www.cvg.rdg.ac.uk/projects/LIDAR/figures/LIDAR_schematic_marc_bartels.jpg">
+							<img src="http://www.cvg.rdg.ac.uk/projects/LIDAR/figures/LIDAR_schematic_marc_bartels.jpg" />
+						</a>
+						<aside class="notes">
+							Flere retursignaler
+						</aside>
+					</section>
+					<section>
+						<img src="img/basic_scene_edit.png" />
+						<aside class="notes">
+							Punkter fordelt i landskab
+						</aside>
+					</section>
+					<section>
+						<a href="http://www.kortforsyningen.dk/sites/default/files/DOKUMENTATION/Data/dk_dhm_punktsky_sep_2012.pdf">
+							<img src="img/klassificeret_intensity.png" />
+						</a>
+						<aside class="notes">
+							Punktsky intentsitet
+						</aside>
+					</section>
+					<section>
+						<a href="http://www.kortforsyningen.dk/sites/default/files/DOKUMENTATION/Data/dk_dhm_punktsky_sep_2012.pdf">
+							<img src="img/klassificeret.png" />
+						</a>
+						<aside class="notes">
+							Klassificeret med klasser
+						</aside>
+					</section>
+					<!-- End DHM section -->
+				</section>
+
+				<!-- Hydrologi -->
+				<section>
+					<section>
+						<h2>Vand på terræn</h2>
+						<p>Meget kompliceret...</p>
+					</section>
+					<section>
+						<h2>Antagelser</h2>
+						<p>
+							<ul>
+								<li>
+									Vandet flyder altid ned ad den stejleste rute
+								</li>
+								<li>
+									Ingen nedsivning, kloakker etc.
+								</li>
+								<li>
+									Vandet flyder uendeligt hurtigt
+								</li>
+								<li>
+									(Uendeligt meget vand)
+								</li>
+							</ul>
+						</p>
+					</section>
+					<section>
+						<a href="http://webhelp.esri.com/arcgisdesktop/9.3/printBooks_topics.cfm?pid=6050">
+							<img src="http://webhelp.esri.com/arcgisdesktop/9.3/published_images/SAc_Hydro_Flow_direction.gif" />
+						</a>
+						<aside class="notes">
+							Flow direction
+						</aside>
+					</section>
+					<section>
+						<a href="http://webhelp.esri.com/arcgisdesktop/9.3/printBooks_topics.cfm?pid=6050">
+							<img src="http://webhelp.esri.com/arcgisdesktop/9.3/published_images/SAc_Hydro_Flow_accumulation.png" />
+						</a>
+						<aside class="notes">
+							Flow direction
+						</aside>
+					</section>
+					<section>
+						<a href="">
+							<img src="" />
+						</a>
+					</section>
+
+				</section>
+				<!-- -->
+				<!-- -->
+				<section>
+					<h2>Tak for opmærksomheden</h2>
+					<h4><a href="mailto:asger@septima.dk">asger@septima.dk</a></h4>
+					Slides på <a href="http://www.septima.dk/kortdage2013">www.septima.dk/kortdage2013</a>
+				</section>
+
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls : true,
+				progress : true,
+				history : true,
+				center : true,
+
+				theme : Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition : Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies : [{
+					src : 'lib/js/classList.js',
+					condition : function() {
+						return !document.body.classList;
+					}
+				}, {
+					src : 'plugin/markdown/marked.js',
+					condition : function() {
+						return !!document.querySelector('[data-markdown]');
+					}
+				}, {
+					src : 'plugin/markdown/markdown.js',
+					condition : function() {
+						return !!document.querySelector('[data-markdown]');
+					}
+				}, {
+					src : 'plugin/highlight/highlight.js',
+					async : true,
+					callback : function() {
+						hljs.initHighlightingOnLoad();
+					}
+				}, {
+					src : 'plugin/zoom-js/zoom.js',
+					async : true,
+					condition : function() {
+						return !!document.body.classList;
+					}
+				}, {
+					src : 'plugin/notes/notes.js',
+					async : true,
+					condition : function() {
+						return !!document.body.classList;
+					}
+				}]
+			});
+
+		</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-37344804-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+	</body>
+</html>
