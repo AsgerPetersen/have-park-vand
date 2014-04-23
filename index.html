@@ -150,19 +150,7 @@ POLYGON((702000.0 6201000.0,703000.0 6201000.0,703000.0 6200000.0,702000.0 62000
 				<!-- LIDAR DATA -->
 				<section>
 					<section>
-						<h2>Danmarks Højdemodel</h2>
-						<p>
-							Data kan hentes gratis fra <a href="http://download.kortforsyningen.dk/">download.kortforsyningen.dk</a> eller <a href="ftp://ftp.kortforsyningen.dk">ftp.kortforsyningen.dk</a>
-						</p>
-					</section>
-					<section>
-						<!-- <a href="http://www.gsi.go.jp/common/000019391.jpg">
-							<img src="http://www.gsi.go.jp/common/000019391.jpg" />
-						</a> -->
-						<img src="img/basic_scene_dtm_dsm.png" />
-						<aside class="notes">
-							DTM og DSM
-						</aside>
+						<h2>Laserscanning af højdemodel</h2>
 					</section>
 					<section>
 						<a href="http://proceedings.esri.com/library/userconf/proc01/professional/papers/pap214/p2141.jpg">
@@ -187,6 +175,15 @@ POLYGON((702000.0 6201000.0,703000.0 6201000.0,703000.0 6200000.0,702000.0 62000
 						</aside>
 					</section>
 					<section>
+						<!-- <a href="http://www.gsi.go.jp/common/000019391.jpg">
+						<img src="http://www.gsi.go.jp/common/000019391.jpg" />
+					</a> -->
+						<img src="img/basic_scene_dtm_dsm.png" />
+						<aside class="notes">
+							DTM og DSM
+						</aside>
+					</section>
+					<section>
 						<a href="http://www.kortforsyningen.dk/sites/default/files/DOKUMENTATION/Data/dk_dhm_punktsky_sep_2012.pdf">
 							<img src="img/klassificeret_intensity.png" />
 						</a>
@@ -202,64 +199,175 @@ POLYGON((702000.0 6201000.0,703000.0 6201000.0,703000.0 6200000.0,702000.0 62000
 							Klassificeret med klasser
 						</aside>
 					</section>
-					<!-- End DHM section -->
-				</section>
+					<section>
+						<a href="http://en.wikipedia.org/wiki/Delaunay_triangulation">
+							<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Delaunay_Triangulation_%28100_Points%29.svg/720px-Delaunay_Triangulation_%28100_Points%29.svg.png" />
+						</a>
+					</section>
+			</section>
+			<!-- End LIDAR section -->
 
-				<!-- Hydrologi -->
-				<section>
-					<section>
-						<h2>Vand på terræn</h2>
-						<p>Meget kompliceret...</p>
-					</section>
-					<section>
-						<h2>Antagelser</h2>
-						<p>
-							<ul>
-								<li>
-									Vandet flyder altid ned ad den stejleste rute
-								</li>
-								<li>
-									Ingen nedsivning, kloakker etc.
-								</li>
-								<li>
-									Vandet flyder uendeligt hurtigt
-								</li>
-								<li>
-									(Uendeligt meget vand)
-								</li>
-							</ul>
-						</p>
-					</section>
-					<section>
-						<a href="http://webhelp.esri.com/arcgisdesktop/9.3/printBooks_topics.cfm?pid=6050">
-							<img src="http://webhelp.esri.com/arcgisdesktop/9.3/published_images/SAc_Hydro_Flow_direction.gif" />
-						</a>
-						<aside class="notes">
-							Flow direction
-						</aside>
-					</section>
-					<section>
-						<a href="http://webhelp.esri.com/arcgisdesktop/9.3/printBooks_topics.cfm?pid=6050">
-							<img src="http://webhelp.esri.com/arcgisdesktop/9.3/published_images/SAc_Hydro_Flow_accumulation.png" />
-						</a>
-						<aside class="notes">
-							Flow direction
-						</aside>
-					</section>
-					<section>
-						<a href="">
-							<img src="" />
-						</a>
-					</section>
 
-				</section>
-				<!-- -->
-				<!-- -->
+			<!-- Danmarks højdemodel -->
+			<section>
 				<section>
-					<h2>Tak for opmærksomheden</h2>
-					<h4><a href="mailto:asger@septima.dk">asger@septima.dk</a></h4>
-					Slides på <a href="http://www.septima.dk/kortdage2013">www.septima.dk/kortdage2013</a>
+					<h2>Danmarks Højdemodel</h2>
+					<p>
+						<ul>
+							<li>Laserscannet mellem 2005 og 2007</li>
+							<li>Cirka 1 punkt per 1,5m x 1,5m (ca 0,5 punkt per m2)</li>
+							<li>Horisontal nøjagtighed ca 70cm</li>
+							<li>Højdenøjagtighed ca 10cm på veldefinerede flader</li>
+							<li>Data kan hentes gratis fra <a href="http://kortforsyningen.dk/">Kortforsyningen</a></li>
+							<li>Mere information på <a href="http://gst.dk/emner/referencenet,-hoejdemodel-opmaaling/danmarks-hoejdemodel/produktbeskrivelse/">GSTs site</a></li>
+						</ul>
+					</p>
 				</section>
+				<section>
+					<h2>"Produkter"</h2>
+					<p>
+						<ul>
+							<li>DTM (og DTM_BRO)</li>
+							<li>DSM</li>
+							<li>Punktsky</li>
+							<li>Højdekurver</li>
+						</ul>
+					</p>
+				</section>
+				<section>
+					<h2>DTM</h2>
+					<img src="img/DHM_DTM.png" />
+				</section>
+				<section>
+					<h2>DSM</h2>
+					<img src="img/DHM_DSM.png" />
+				</section>
+				<section>
+					<h2>Højdekurver</h2>
+					<img src="img/DHM_kurver.png" />
+				</section>
+				<section>
+					<h2>Punktsky</h2>
+					<img src="img/klassificeret.png" />
+				</section>
+				<section>
+					<h2>DTM_BRO</h2>
+					<img src="img/DHM_DTMBRO.png" />
+				</section>
+				<section>
+					<h2>DTM</h2>
+					<img src="img/DHM_DTMBRO-DTM.png" />
+				</section>
+				<section>
+					<h2>Problemer</h2>
+					<ul>
+						<li>"Gammel"</li>
+						<li>En del forskellige fejl og mangler</li>
+						<li>Brofix, lakefix, kystfix og andre "korrektioner"</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Scanningsår</h2>
+					<img src="img/scanningsaar.png" />
+				</section>
+				<section>
+					<h2>Klassifikationsfejl<h2>
+					<img src="img/DHM_lowpoint.png" />
+				</section>
+				<section>
+					<h2>Instrumentfejl<h2>
+					<img src="img/DHM_darkroofs.png" />
+				</section>
+				<section>
+					<h2>Masser af automatiske "fix"<h2>
+					<img src="img/DHM_lakefix.jpg" />
+				</section>
+				<section>
+					<h2>Ny model på vej</h2>
+					<ul>
+						<li>Scannes 2014 - 2015</li>
+						<li>4 punkter per m2</li>
+						<li>Højdenøjagtighed 5cm</li>
+						<li>Horisontal nøjagtighed 15cm</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Første data<h2>
+					<img src="img/DHM_NYDHM2.jpg" />
+				</section>
+				<section>
+					<h2>Første data<h2>
+					<img src="img/DHM_NYDHM3.jpg" />
+				</section>
+			</section>
+			<!-- END Danmarks højdemodel -->
+
+			<!-- Hydrologi -->
+			<section>
+				<section>
+					<h2>Vand på terræn</h2>
+					<p>Meget kompliceret...</p>
+				</section>
+				<section>
+					<h2>Antagelser</h2>
+					<p>
+						<ul>
+							<li>
+								Vandet flyder altid ned ad den stejleste rute
+							</li>
+							<li>
+								Ingen nedsivning, kloakker etc.
+							</li>
+							<li>
+								Vandet flyder uendeligt hurtigt
+							</li>
+							<li>
+								(Uendeligt meget vand)
+							</li>
+						</ul>
+					</p>
+				</section>
+				<section>
+					<a href="http://webhelp.esri.com/arcgisdesktop/9.3/printBooks_topics.cfm?pid=6050">
+						<img src="http://webhelp.esri.com/arcgisdesktop/9.3/published_images/SAc_Hydro_Flow_direction.gif" />
+					</a>
+					<aside class="notes">
+						Flow direction
+					</aside>
+				</section>
+				<section>
+					<a href="http://webhelp.esri.com/arcgisdesktop/9.3/printBooks_topics.cfm?pid=6050">
+						<img src="http://webhelp.esri.com/arcgisdesktop/9.3/published_images/SAc_Hydro_Flow_accumulation.png" />
+					</a>
+					<aside class="notes">
+						Flow direction med pile
+					</aside>
+				</section>
+				<section>
+					<a href="">
+						<img src="" />
+					</a>
+				</section>
+			</section>
+			<!-- END hydrologi -->
+
+			<!-- Eksisterende klimadata -->
+			<section>
+				<section>
+					<h2>KLimaplaner</h2>
+					<p>
+						Data kan hentes gratis fra <a href="http://download.kortforsyningen.dk/">download.kortforsyningen.dk</a> eller <a href="ftp://ftp.kortforsyningen.dk">ftp.kortforsyningen.dk</a>
+					</p>
+				</section>
+			</section>
+			<!-- END Eksisterende klimadata -->
+			<!-- -->
+			<!-- -->
+			<section>
+				<h2>Tak for opmærksomheden</h2>
+				<h4><a href="mailto:asger@septima.dk">asger@septima.dk</a></h4>
+				Slides på <a href="http://www.septima.dk/kortdage2013">www.septima.dk/kortdage2013</a>
+			</section>
 
 
 			</div>
