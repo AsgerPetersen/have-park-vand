@@ -1,12 +1,12 @@
 Analyser på DTM/DSM
 =====================================
-Data:
+Følgende data anvendes:
+* DTM.tif, Danmarks Højdemodel Terrænmodel
+* DSM.tif, Danmarks Højdemodel Overflademodel
+* DHyM.tif, Danmarks Højdemodel Hydrologisk forbedret terrænmodel
+* FOT-Bygninger.shp, bygningstemaet fra FOT
 
-Følgende data anvendes (alle er klippet til øvelsesområdet)
-* DTM.tif, Terrænmodel
-* DSM.tif, Overflademodel
-* DHyM.tif, Hydrologisk forbedret terrænmodel
-* FOT-Bygninger.shp, bygningstemaetfra FOT
+Alle data er hentet fra [Kortforsyningen](http://kortforsyningen.dk/) og er klippet til øvelsesområdet. I Bygningstemaet "FOT-Bygninger.shp" er der for nemheds skyld tilføjet en ekstra attribut kaldet `HOEJDE`, som indeholder værdien 30 for alle rækker.
 
 Basale rasterfunktioner
 -------------------
@@ -194,7 +194,7 @@ Hvis der ønskes et mere eller minde detaljeret netværk kan processen køres ig
 
 Watershed basins
 -----------------------------
-Åbn "Filled DEM" og "Channel Network" fra ovenstående.
+Åbn "Filled DEM" og rasteren "Channel Network" fra ovenstående.
 
 I Processing toolbox aktiveres algoritmen "Watershed Basins".
 
@@ -207,6 +207,22 @@ Oplandene kan vektoriseres på flere måder i QGIS. Feks med Processing Algoritm
 I Processing toolbox aktiveres algoritmen "Vectorising grid classes".
 
 Input "Grid" sættes til "Wateshed Basins" fra foregående proces (Bemærk, at det IKKE skal være output af samme navn fra Wang & Liu). "Class Selection" sættes til "[1] all classes" og "Vectorised class as..." sættes til "[1] each island as a seperated polygon".
+
+Hældning
+-----------------------------
+Vi ønsker et kort, hvor man kan aflæse terrænets hældning omkring hver celle.
+
+Åbn "DHyM-Bygning" og rasteren "Catchment Area".
+
+Beregn et hældningskort for "DHyM-Bygning". (Klik Raster -> Analysis -> DEM (Terrain models)). Vælg "Slope" i rullegardinet og sæt eventuelt flueben i "Slope expressed as percent", hvis du foretrækker dette. Lad os kalde output "DHyM-Hældning". Kig på resultatet. Brug eventuelt et skyggekort til at undersøge mærkværdigheder.
+
+Nu ønsker vi at lave et kort, hvor vi kun ser hældninger for de celle, hvor der er en kanal på overfladen. Dette kan vi gøre i "Raster calculator" med følgende formel:
+
+```("Catchment Area@1" > 1000) * "DHyM-Hældning@1"```
+
+Kodestumpen `("Catchment Area@1" > 1000)` bliver 1, hvis Catchment Area er større end 1000 i den pågældende celle, ellers bliver den 0 (nul).
+
+Output af formlen er således 0 for alle de celler, hvor oplandet er mindre end 1000m2. For alle de celler, hvor oplandet er større end 1000 bliver output det samme som DHyM-Hældning.
 
 Processing model
 -----------------------------
